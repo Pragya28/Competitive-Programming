@@ -11,5 +11,9 @@
 
 
 def dicetoorderedhand(a, b, c):
-	# your code goes here
-	pass
+	hand = [a, b, c]
+	hand.sort(reverse = True)
+	out = 0
+	for ele in hand:
+		out = out * 10 + ele
+	return out
