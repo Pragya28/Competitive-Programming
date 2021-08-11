@@ -7,5 +7,17 @@
 
 
 def fun_set_kth_digit(n, k, d):
-		return 0
-
+	flag = (n == abs(n))
+	n = abs(n)
+	i = 0
+	x = 0
+	for i in range(k):
+		dig = n % 10
+		n //= 10
+		x = dig * 10 ** i + x
+	n //= 10
+	n = n * 10 ** (k+1) + d * 10 ** k + x
+	if flag:
+		return n
+	else:
+		return -n
