@@ -3,9 +3,21 @@
 # In the case of a tie, return the smaller odd value. 
 # Note that the result must be an int, so nearestOdd(13.0) is the int 13, and not the float 13.0.
 
-
+import math
 
 def fun_nearestodd(n):
-	return 0
-
+	# n = math.ceil(n)
+	# if n % 2 == 0:
+	# 	return n-1
+	# else:
+	# 	return n
+	s = str(n)
+	n = int(s.split(".")[0])
+	d = int(s.split(".")[1])
+	if n % 2 == 0 and d == 0: 
+		return n-1
+	elif n % 2 == 0:
+		return n+1
+	else:
+		return n
 
