@@ -9,4 +9,18 @@
 
 
 def fun_pascaltrianglevalue(row, col):
-	return 1
+	if row < 0 or col < 0 or row < col:
+		return 0
+	if row == 0:
+		return 1
+	if col == 0 or col == row:
+		return 1
+	r = [1, 1]
+	for i in range(2, row+1):
+		nR = [1]
+		for j in range(1, i):
+			k = r[j-1] + r[j]
+			nR.append(k)
+		nR.append(1)
+		r = nR
+	return r[col]
