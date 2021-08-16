@@ -22,9 +22,6 @@
 #   [ 0, 1, 3] ]
 
 import pytest
-import os
-import sys
-sys.path.append(os.getcwd())
 
 def removeRowAndCol(L, row, col):
     L.pop(row)
