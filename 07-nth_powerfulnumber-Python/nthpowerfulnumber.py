@@ -5,6 +5,35 @@
 # For example:- 36 is a powerful number. It is divisible by both 3 and square of 3 i.e, 9.
 
 
+def isPrime(n):
+	if n < 2:
+		return False
+	if n == 2:
+		return True
+	if n % 2 == 0:
+		return False
+	for i in range(3, int(n**0.5)+1, 2):
+		if n % i == 0:
+			return False
+	return True
+
 def nthpowerfulnumber(n):
-	# Your code goes here
-	pass
+	if n == 0:
+		return 1
+	i = 0
+	k = 1
+	while i < n:
+		flag = False
+		k += 1
+		for j in range(2, k):
+			if k % j == 0 and isPrime(j):
+				if k % j**2 == 0:
+					flag = True
+				else:
+					flag = False
+					break
+		if (flag):
+			i += 1
+	return k
+
+print(nthpowerfulnumber(4))
