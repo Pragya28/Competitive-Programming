@@ -17,6 +17,19 @@
 # assert(ishappynumber(404) == True)
 # assert(ishappynumber(405) == False)
 
+def sumOfSq(n):
+	s = 0
+	while n > 0:
+		s += (n % 10) ** 2
+		n //= 10
+	return s
+
 def ishappynumber(n):
-	# your code goes here
-	pass
+	if n < 0:
+		return False
+	n = sumOfSq(n)
+	while (n > 9):
+		n = sumOfSq(n)
+	if n == 1:
+		return True
+	return False
