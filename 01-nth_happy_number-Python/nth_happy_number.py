@@ -14,6 +14,28 @@
 # assert(nth_happy_number(7) == 28)
 # assert(nth_happy_number(8) == 31)
 
+def sumOfSq(n):
+	s = 0
+	while n > 0:
+		s += (n % 10) ** 2
+		n //= 10
+	return s
+
+def ishappynumber(n):
+	if n < 0:
+		return False
+	n = sumOfSq(n)
+	while (n > 9):
+		n = sumOfSq(n)
+	if n == 1:
+		return True
+	return False
 
 def nth_happy_number(n):
-	return 0
+	i = 0
+	k = 0
+	while i < n:
+		k += 1
+		if ishappynumber(k):
+			i += 1
+	return k
