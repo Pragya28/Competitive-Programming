@@ -8,7 +8,25 @@
 # Note: your function may not just create a copy of L and call the destructive version of this function (below) on 
 # that copy and return it. Instead, you must directly construct the result here.
 
+def count(L, index):
+	c = 1
+	for i in range(index, len(L)-1):
+		if L[i] == L[i+1]:
+			c += 1
+		else:
+			break
+	return c
 
 def shortenlongruns(L, k):
-	# Your code goes here
-	pass
+	i = 0
+	res = []
+	while i < len(L):
+		n = count(L, i)
+		r = []
+		if n < k:
+			r = [L[i]] * n
+		else:
+			r = [L[i]] * (k-1)
+		res.extend(r)
+		i += n
+	return res
