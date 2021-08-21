@@ -13,9 +13,14 @@
 
 
 def fabricyards(inches):
-	# Your code goes here...
-	return 1
+	m = inches // 36
+	n = inches / 36
+	if n != m:
+		return m + 1
+	return m
+
 
 def fabricexcess(inches):
-	# Your code goes here...
-	return 1
+	yards = fabricyards(inches)
+	excess = yards * 36 - inches
+	return excess
