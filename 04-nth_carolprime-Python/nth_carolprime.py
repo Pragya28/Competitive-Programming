@@ -8,6 +8,27 @@
 # Hint: you may need to generate only Carol numbers, and then test those as you go 
 # for primality (and you may need to think about that hint for a while for it to make sense!).
 
+def isPrime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n ** 0.5)+1, 2):
+        if n % i == 0:
+            return False
+    return True   
 
 def fun_nth_carolprime(n):
-    return 0
+    i = -1
+    k = 2
+    num = 0
+    while i < n:
+        num = (2 ** k - 1) ** 2 - 2
+        if isPrime(num):
+            i += 1
+        k += 1
+    return num
+
+print(fun_nth_carolprime(3))
