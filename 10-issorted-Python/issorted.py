@@ -6,5 +6,16 @@
 # the list.
 
 def issorted(a):
-	# your code goes here
-	pass
+	flag = False
+	for i in range(len(a)-1):
+		if a[i] > a[i+1]:
+			flag = True
+	if flag:
+		flag = False
+		for i in range(len(a)-1):
+			if a[i] < a[i+1]:
+				flag = True
+	if flag:
+		return False
+	return True
+	
