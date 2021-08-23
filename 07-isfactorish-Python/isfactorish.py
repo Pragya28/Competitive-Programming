@@ -10,7 +10,28 @@
 #  assert(fun_isfactorish(420) == False) # 420 has a 0 (0 is not a factor)
 #  assert(fun_isfactorish(42) == False) # 42 has a leading 0 (only 2 unique digits)
 
+def splitNum(n):
+	dig = []
+	while n > 0:
+		dig.append(n%10)
+		n //= 10
+	return dig
+
+def uniqueAnd3digit(dig):
+	if len(dig) != 3 or 0 in dig:
+		return False
+	uni = set(dig)
+	if len(uni) != len(dig):
+		return False
+	return True
 
 def fun_isfactorish(n):
-	return False
-
+	n = abs(n)
+	dig = splitNum(n)
+	if uniqueAnd3digit(dig):
+		for x in dig:
+			if n % x != 0:
+				return False
+	else:
+		return False
+	return True
