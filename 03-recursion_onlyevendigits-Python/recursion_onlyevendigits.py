@@ -8,5 +8,21 @@
 # Also the function returns the empty list if the original list is empty. 
 # Remember to not use strings. You may not use loops/iteration in this problem.
 
+def getEvenDigits(x, n = 0, c = 0):
+	if x == 0:
+		return n
+	if x % 10 % 2 == 0:
+		n = (x%10)*10**c+n
+		c += 1
+	return getEvenDigits(x//10, n, c)
+
+def onlyEvenDigits(inL, outL = []):
+	if len(inL) == 0:
+		return outL
+	outL.append(getEvenDigits(inL[0]))
+	return onlyEvenDigits(inL[1:], outL)
+
 def fun_recursion_onlyevendigits(l): 
-		return []
+		return onlyEvenDigits(l, [])
+
+print(fun_recursion_onlyevendigits([43, 23265, 17, 58344]))
