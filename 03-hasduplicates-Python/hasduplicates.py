@@ -4,5 +4,11 @@
 # if any two values in L are equal to each other), and False otherwise.
 
 def hasduplicates(L):
-	# Your code goes here
-	pass
+	newL = []
+	for i in L:
+		for n in i:
+			if n not in newL:
+				newL.append(n)
+			else:
+				return True
+	return False
