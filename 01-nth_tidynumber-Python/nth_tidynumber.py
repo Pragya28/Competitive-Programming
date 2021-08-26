@@ -6,5 +6,20 @@
 # fun_nth_tidynumber(15) = 17
 # fun_nth_tidynumber(35) = 46
 
+def isTidy(n):
+    while (n > 0):
+        a = n % 10
+        n //= 10
+        b = n % 10
+        if a < b:
+            return False
+    return True
+
 def fun_nth_tidynumber(n):
-    return 0
+    i = 0
+    k = 0
+    while i <= n:
+        k += 1
+        if isTidy(k):
+            i += 1
+    return k
