@@ -6,5 +6,15 @@
 
 
 def fun_carrylessadd(x, y):
-	return 0
+	s = 0
+	c = 0
+	while x > 0 or y > 0:
+		a = x % 10
+		b = y % 10 
+		s = (a+b)%10 * (10 ** c) + s
+		x //= 10
+		y //= 10
+		c += 1
+	return s
 
+print(fun_carrylessadd(785,376))
