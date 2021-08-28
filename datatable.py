@@ -25,10 +25,27 @@
 # (without hardcoding any test cases):
 
 class DataColumn: 
-    pass
+    def __init__(self, rows, n):
+        self.col = [rows[i].strip().split(",")[n] for i in range(len(rows))]
+        self.label = self.col[0]
+        self.data = list(map(int,self.col[1:]))
+        
+    def average(self):
+        return sum(self.data)/len(self.data)
 
 class DataTable:
-    pass
+    def __init__(self, data):
+        self.data = data
+        self.rows = self.data.strip().split("\n")
+    
+    def getDims(self):
+        r = len(self.rows)
+        c = len(self.rows[0].strip().split(","))
+        return r, c
+
+    def getColumn(self, n):
+        col = DataColumn(self.rows, n)
+        return col
 
 def almostEqual(a, b):
     return True
