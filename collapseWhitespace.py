@@ -15,8 +15,15 @@
 # You should not use a regular expression library.
 
 def cw(s):
-    # Your code goes here...
-    return ""
+    st = ""
+    for ch in s:
+        if ch.isspace():
+            if len(st) == 0 or not st[-1].isspace():
+                st += " "
+        else:
+            st += ch    
+    return st
+
 
 assert(cw("a\nb") == "a b")
 assert(cw("a\n   \t    b") == "a b")
