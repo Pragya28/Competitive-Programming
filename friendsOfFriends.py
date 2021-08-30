@@ -25,5 +25,23 @@ Thus, in this example, friendsOfFriends should return:
 '''
 
 def friendsOfFriends(d):
-    # Your code goes here...
-    return None
+    fof = {}
+    for person in d:
+        friends = d[person]
+        fof[person] = set()
+        for friend in friends:
+            for f in d[friend]:
+                if f != person and f not in d[person]:
+                    fof[person].add(f)
+    return fof
+
+d = { }
+d["jon"] = set(["arya", "tyrion"])
+d["tyrion"] = set(["jon", "jaime", "pod"])
+d["arya"] = set(["jon"])
+d["jaime"] = set(["tyrion", "brienne"])
+d["brienne"] = set(["jaime", "pod"])
+d["pod"] = set(["tyrion", "brienne", "jaime"])
+d["ramsay"] = set()
+
+print(friendsOfFriends(d))
