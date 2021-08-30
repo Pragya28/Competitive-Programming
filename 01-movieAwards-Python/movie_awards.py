@@ -20,5 +20,10 @@ the function should return as follows
 '''
 
 def movie_awards(oscarResults):
-    # Your code goes here...
-    pass
+    movies = {}
+    for tup in oscarResults:
+        if tup[1] not in movies:
+            movies[tup[1]] = 1
+        else:
+            movies[tup[1]] += 1
+    return movies
