@@ -18,6 +18,59 @@
 # returns True if it represents a legal Kings Tour 
 # and False otherwise.
 
+def isLegalMove(board, row, col):
+    n = len(board)
+    k = board[row][col]
+    if row+1 < n:
+        if board[row+1][col] == k+1:
+            return True
+        if col+1 < n and board[row+1][col+1] == k+1:
+            return True
+        if col-1 >= 0 and board[row+1][col-1] == k+1:
+            return True
+    if row-1 < n:
+        if board[row-1][col] == k+1:
+            return True
+        if col+1 < n and board[row-1][col+1] == k+1:
+            return True
+        if col-1 >= 0 and board[row-1][col-1] == k+1:
+            return True
+    if col+1 < n and board[row][col+1] == k+1:
+        return True
+    if col-1 >= 0 and board[row][col-1] == k+1:
+        return True
+    return False
+ 
 def isKingsTour(board):
-    # Your code goes here...
-    pass
+    n = len(board)
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] > 0 and board[i][j] < n**2 and not isLegalMove(board, i, j):
+                return False
+    return True
+
+board = [ 
+    [ 3, 2, 1 ], 
+    [ 6, 4, 9 ],
+    [ 5, 7, 8 ]
+ ]
+
+assert(isKingsTour(board) == True)
+
+board = [ 
+    [ 1, 2, 3 ], 
+    [ 7, 4, 8 ],
+    [ 6, 5, 9 ]
+ ]
+
+assert(isKingsTour(board) == False)
+
+board = [ 
+    [ 3, 2, 1 ], 
+    [ 6, 4, 0 ],
+    [ 5, 7, 8 ]
+ ]
+
+assert(isKingsTour(board) == False)
+
+print("All test cases passed.")
