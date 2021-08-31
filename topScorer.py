@@ -14,14 +14,30 @@
 # If nobody wins (there is no data), return None (not the 
 # string "None"). So, for example:
 
+import sys
+
 def topScorer(data):
-    # Your code goes here...
-    return ""
+    if data == "":
+        return None
+    data = data.splitlines()
+    score = 0
+    name = ""
+    for row in data:
+        r = row.split(",")
+        s = list(map(int, r[1:]))
+        s = sum(s)
+        if s == score:
+            name += "," + r[0]
+        if s > score:
+            score = s
+            name = r[0]
+    return name    
 
 data = '''\
 Fred,10,20,30,40
 Wilma,10,20,30
 '''
+
 assert(topScorer(data) == 'Fred')
 
 data = '''\
