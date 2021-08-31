@@ -29,9 +29,34 @@
 # assert(isKnightsTour(board)==True)
 
 
+def isLegalMove(board, row, col):
+    n = len(board)
+    k = board[row][col]
+    if row+1 < n and col+2 < n and board[row+1][col+2] == k+1:
+        return True
+    if row+2 < n and col+1 < n and board[row+2][col+1] == k+1:
+        return True
+    if row-1 >= 0 and col+2 < n and board[row-1][col+2] == k+1:
+        return True
+    if row-2 >= 0 and col+1 < n and board[row-2][col+1] == k+1:
+        return True
+    if row+1 < n and col-2 >= 0 and board[row+1][col-2] == k+1:
+        return True
+    if row+2 < n and col-1 >= 0 and board[row+2][col-1] == k+1:
+        return True
+    if row-1 >= 0 and col-2 >= 0 and board[row-1][col-2] == k+1:
+        return True
+    if row-2 >= 0 and col-1 >= 0 and board[row-2][col-1] == k+1:
+        return True
+
 def isKnightsTour(board):
-    # Your code goes here...
-    pass
+    n = len(board)
+    last = n ** 2
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] != last and not isLegalMove(board, i, j):
+                return False
+    return True
 
 board = [
             [  1, 60, 39, 34, 31, 18,  9, 64 ],
