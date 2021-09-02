@@ -34,5 +34,31 @@
 # column position is n, the new position would be: (0, n-2). 
 
 def makeMagicSquare(n):
-    # Your code goes here...
-    pass
+    if n < 0 or n % 2 == 0:
+        return None
+    sq = [[0]*n for i in range(n)]
+    i = n // 2
+    j = n - 1
+    k = 1
+    while k <= n**2:
+        if sq[i][j] == 0:
+            sq[i][j] = k
+            i -= 1
+            j += 1
+            k += 1
+        else:
+            i += 1
+            j -= 2
+        if i == - 1 and j == n:
+            i = 0
+            j = n - 2
+        else:
+            i %= n
+            j %= n
+    return sq
+
+assert(makeMagicSquare(3) == [[2, 7, 6], [9, 5, 1], [4, 3, 8]])
+assert(makeMagicSquare(2) == None)
+assert(makeMagicSquare(-1) == None)
+assert(makeMagicSquare(5) == [[9, 3, 22, 16, 15], [2, 21, 20, 14, 8], [25, 19, 13, 7, 1], [18, 12, 6, 5, 24], [11, 10, 4, 23, 17]])
+print("All test cases passed")
